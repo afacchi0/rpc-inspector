@@ -61,7 +61,7 @@ func (c *Client) call(method string, out any) error {
 		return err
 	}
 	if env.Error != nil {
-		return fmt.Errorf(env.Error.Message)
+		return fmt.Errorf("ethereum rpc error: %s", env.Error.Message)
 	}
 
 	return json.Unmarshal(env.Result, out)
